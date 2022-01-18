@@ -1,0 +1,41 @@
+{
+  "name": "node-js-source-maps-performance-test",
+  "version": "0.0.1",
+  "description": "",
+  "author": "",
+  "private": true,
+  "license": "UNLICENSED",
+  "scripts": {
+    "prebuild": "rimraf dist",
+    "build": "npm run build:nestjs && npm run build:bundle",
+    "build:nestjs": "nest build",
+    "build:bundle": "esbuild dist/unbundled/main.js --bundle --sourcemap --outfile=dist/bundle.js --platform=node --external:@nestjs/websockets --external:@nestjs/microservices --external:class-transformer --external:class-validator --external:cache-manager",
+    "start-bundle": "node --enable-source-maps dist/bundle.js",
+    "start-without-source-maps": "node dist/bundle.js",
+    "start-unbundled": "node --enable-source-maps dist/unbundled/main.js",
+    "start-bundle-with-source-map-support": "node -r source-map-support/register dist/bundle.js",
+    "artillery": "artillery run artillery.yaml"
+  },
+  "dependencies": {
+    "@nestjs/common": "^8.0.0",
+    "@nestjs/core": "^8.0.0",
+    "@nestjs/platform-express": "^8.0.0",
+    "reflect-metadata": "^0.1.13",
+    "rimraf": "^3.0.2",
+    "rxjs": "^7.2.0"
+  },
+  "devDependencies": {
+    "@nestjs/cli": "^8.0.0",
+    "@nestjs/schematics": "^8.0.0",
+    "@types/express": "^4.17.13",
+    "@types/node": "^16.0.0",
+    "artillery": "^2.0.0-10",
+    "esbuild": "^0.14.11",
+    "source-map-support": "^0.5.20",
+    "ts-jest": "^27.0.3",
+    "ts-loader": "^9.2.3",
+    "ts-node": "^10.0.0",
+    "tsconfig-paths": "^3.10.1",
+    "typescript": "^4.3.5"
+  }
+}

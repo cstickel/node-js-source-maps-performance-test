@@ -1,0 +1,13 @@
+config:
+  target: "http://localhost:3000"
+  phases:
+    - name: warm up
+      duration: 5
+      arrivalRate: 5
+    - name: load
+      duration: 60
+      arrivalRate: 20
+scenarios:
+  - flow:
+    - get:
+        url: "/some-unknown-path"
