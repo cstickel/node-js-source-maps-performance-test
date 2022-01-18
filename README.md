@@ -19,4 +19,4 @@ and `yarn start-bundle-with-source-map-support`. Just run artillery against the 
 to see the differences in performance.
 
 Artillery is set to do 20 req/sec for 1 minute. This should show the effect, however for really fast machines
-the `arrivalRate` of the load phase in `artillery.yaml` could be slightly improved.
+the `arrivalRate` of the load phase in `artillery.yaml` could be slightly increased.
